@@ -1,38 +1,75 @@
 "use client";
 
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Shield, Target, Eye, Heart, Zap, Award, ArrowRight } from "lucide-react";
+import {
+  Shield,
+  Target,
+  Eye,
+  Heart,
+  Zap,
+  Award,
+  ArrowRight,
+  Volume2,
+  VolumeX,
+  Play,
+  Pause,
+} from "lucide-react";
 import JourneyTree from "../components/about/JourneyTree";
 
-
 export default function AboutPage() {
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef(null);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
   const values = [
     {
       icon: <Zap className="w-6 h-6 text-[var(--coral)]" />,
       title: "Zero-Latency Priority",
-      description: "When emergencies occur, seconds dictate outcomes. We engineer every software packet and hardware signal for maximum delivery speed."
+      description:
+        "When emergencies occur, seconds dictate outcomes. We engineer every software packet and hardware signal for maximum delivery speed.",
     },
     {
       icon: <Shield className="w-6 h-6 text-[var(--primary)] dark:text-purple-300" />,
       title: "Uncompromising Privacy",
-      description: "Location tracking activates strictly during intentional emergency dispatches or active safety check-ins. Your data belongs to you."
+      description:
+        "Location tracking activates strictly during intentional emergency dispatches or active safety check-ins. Your data belongs to you.",
     },
     {
       icon: <Heart className="w-6 h-6 text-rose-500" />,
       title: "Human-Centric Design",
-      description: "Emergency interfaces must require zero cognitive load. We design tactile and visual interactions for high-stress scenarios."
+      description:
+        "Emergency interfaces must require zero cognitive load. We design tactile and visual interactions for high-stress scenarios.",
     },
     {
       icon: <Award className="w-6 h-6 text-amber-400" />,
       title: "Connected Ecosystem",
-      description: "Combining standalone hardware triggers with multi-channel smartphone software creates a resilient safety mesh."
-    }
+      description:
+        "Combining standalone hardware triggers with multi-channel smartphone software creates a resilient safety mesh.",
+    },
   ];
 
   return (
     <main className="min-h-screen pt-32 pb-24 relative overflow-hidden bg-[var(--bg-main)]">
-      
       {/* Background Video Layer */}
       <div className="absolute inset-0 z-0 w-full h-full">
         <video autoPlay loop muted playsInline className="w-full h-full object-cover">
@@ -41,8 +78,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-[var(--bg-main)]/85 dark:bg-[var(--bg-main)]/90 backdrop-blur-[2px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-24">
-        
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-20">
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -60,6 +96,86 @@ export default function AboutPage() {
           <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed">
             WOTO was founded with a singular purpose: bridging physical hardware and rapid cloud response to deliver immediate help when every second counts.
           </p>
+        </motion.div>
+
+        {/* Portrait Founder Reel Player Section */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex justify-center"
+        >
+          <div className="relative w-full max-w-[340px] sm:max-w-[380px] aspect-[9/16] rounded-3xl overflow-hidden shadow-2xl border border-white/20 group bg-black">
+            <video
+              ref={videoRef}
+              autoPlay
+              loop
+              muted={isMuted}
+              playsInline
+              className="w-full h-full object-cover cursor-pointer"
+              onClick={togglePlay}
+            >
+              <source
+                src="https://twb1nsdhwc0tqch8.public.blob.vercel-storage.com/IMG_9112.MOV"
+                type="video/mp4"
+              />
+            </video>
+
+            {/* Top Info Tag & Mute Badge */}
+            <div className="absolute top-4 left-4 right-4 flex items-start justify-between z-20 pointer-events-none">
+              <div className="text-white drop-shadow-md space-y-0.5">
+                <h3 className="font-extrabold text-sm sm:text-base tracking-wide leading-tight">
+                  Nishant Chaudhary
+                </h3>
+                <p className="text-[10px] font-semibold tracking-wider text-gray-300 uppercase">
+                  Founder
+                </p>
+              </div>
+
+              {/* Tap to Unmute Overlay pill (shows when muted) */}
+              {isMuted && (
+                <button
+                  onClick={toggleMute}
+                  className="pointer-events-auto px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold tracking-wider uppercase flex items-center gap-1.5 shadow-lg hover:bg-black/80 transition-all"
+                >
+                  <VolumeX className="w-3.5 h-3.5" />
+                  <span>Tap to Unmute</span>
+                </button>
+              )}
+            </div>
+
+            {/* Floating Glassmorphic Control Bar at Bottom */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center justify-between w-[85%] px-4 py-2.5 rounded-full bg-black/40 backdrop-blur-xl border border-white/20 shadow-2xl">
+              <button
+                onClick={togglePlay}
+                className="p-1.5 rounded-full text-white hover:bg-white/20 transition-all"
+                aria-label={isPlaying ? "Pause Video" : "Play Video"}
+              >
+                {isPlaying ? (
+                  <Pause className="w-5 h-5 fill-white" />
+                ) : (
+                  <Play className="w-5 h-5 fill-white" />
+                )}
+              </button>
+
+              <button
+                onClick={toggleMute}
+                className="flex items-center gap-1.5 px-3 py-1 rounded-full text-white hover:bg-white/20 transition-all text-xs font-semibold uppercase tracking-wider"
+              >
+                {isMuted ? (
+                  <>
+                    <VolumeX className="w-4 h-4" />
+                    <span>Mute</span>
+                  </>
+                ) : (
+                  <>
+                    <Volume2 className="w-4 h-4" />
+                    <span>Unmute</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
         </motion.div>
 
         {/* Mission & Vision Section */}
@@ -154,7 +270,6 @@ export default function AboutPage() {
             </Link>
           </div>
         </div>
-
       </div>
     </main>
   );
