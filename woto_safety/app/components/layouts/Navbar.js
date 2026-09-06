@@ -87,7 +87,7 @@ export default function Navbar() {
               </div>
               <div className="flex flex-col">
                 <span className="font-bold text-xl tracking-tight text-[var(--text-main)]">
-                  WOTO<span className="text-[var(--coral)]">.</span>
+                  WOTO
                 </span>
                 <span className="text-[10px] tracking-wider uppercase text-[var(--text-muted)] -mt-1 font-semibold">
                   Safety
