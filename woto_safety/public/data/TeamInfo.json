@@ -1,0 +1,65 @@
+[
+  {
+    "id": "member-1",
+    "name": "Nishant Chaudhary",
+    "role": "Founder & CEO",
+    "bio": "Founder & CEO of WOTO, leading the vision, strategy, and development of the WOTO safety ecosystem.",
+    "photo": "/Team_Images/Founder.png",
+    "linkedin": "https://www.linkedin.com/in/nishant-chaudhary-987062375",
+    "instagram": "https://www.instagram.com/nishant_chaudhary888/?hl=en"
+  },
+  {
+    "id": "member-2",
+    "name": "Shweta Maurya",
+    "role": "Co-Founder & CTO",
+    "bio": "Co-Founder & CTO of WOTO, leading the technology and technical direction of the platform.",
+    "photo": "/Team_Images/Co-Founder.jpeg",
+    "linkedin": "https://www.linkedin.com/in/shweta-maurya-b06874325",
+    "instagram": null
+  },
+  {
+    "id": "member-3",
+    "name": "Harsh Vardhan",
+    "role": "Hardware Lead",
+    "bio": "Hardware Lead at WOTO, focused on the development and integration of WOTO's safety hardware.",
+    "photo": "/Team_Images/Harsh.jpeg",
+    "linkedin": "https://www.linkedin.com/in/harsh-vardhan-goel-849699378",
+    "instagram": null
+  },
+  {
+    "id": "member-4",
+    "name": "Ayush Rawat",
+    "role": "Website Developer",
+    "bio": "Website Developer at WOTO, responsible for building and maintaining the WOTO web experience.",
+    "photo": "/Team_Images/Ayush_Rawat.jpeg",
+    "linkedin": "https://www.linkedin.com/in/ayush-rawat-745854326/",
+    "instagram": "https://www.instagram.com/_ayushrf_/?hl=en"
+  },
+  {
+    "id": "member-5",
+    "name": "Yash Awasthi",
+    "role": "Media Head",
+    "bio": "Media Head at WOTO, responsible for managing the company's media presence and communications.",
+    "photo": "/Team_Images/Yash_Awasthi.jpeg",
+    "linkedin": "https://www.linkedin.com/in/yash-awasthi-23b9011b6/",
+    "instagram": null
+  },
+  {
+    "id": "member-6",
+    "name": "Aditya Pathak",
+    "role": "Data Analyst",
+    "bio": "Data Analyst at WOTO, responsible for analyzing user data and providing insights to drive product decisions.",
+    "photo": "/Team_Images/Aditya_Data_Analytics.jpeg",
+    "linkedin": "https://www.linkedin.com/in/aditya-pathak-9b6b532b9?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+    "instagram": null
+  },
+  {
+    "id": "member-7",
+    "name": "Pratigya Bishnoi",
+    "role": "Marketing Head",
+    "bio": "Marketing Head at WOTO, focused on building the brand, marketing strategy, and growing WOTO's reach.",
+    "photo": "/Team_Images/Pratigya.png",
+    "linkedin": "https://www.linkedin.com/in/pratigya-bishnoi-aa143b380",
+    "instagram": "https://www.instagram.com/bishnoi_pratigya2005/?hl=en"
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "phase": "Phase 01",
+    "title": "Seed of Innovation",
+    "subtitle": "Problem Discovery",
+    "iconType": "sparkles",
+    "desc": "Recognized a critical vulnerability in traditional safety solutions: the delay in unlocking a smartphone during sudden emergencies.",
+    "align": "left"
+  },
+  {
+    "id": 2,
+    "phase": "Phase 02",
+    "title": "Branching Hardware",
+    "subtitle": "Hardware & BLE R&D",
+    "iconType": "cpu",
+    "desc": "Engineered the WOTO Smart Button prototype with ultra-low latency Low Energy Bluetooth protocols and a 2-year battery life cycle.",
+    "align": "right"
+  },
+  {
+    "id": 3,
+    "phase": "Phase 03",
+    "title": "Digital Ecosystem",
+    "subtitle": "Cloud & App Architecture",
+    "iconType": "cloud",
+    "desc": "Architected modern Next.js and Node.js/MongoDB microservices for multi-channel emergency alert dispatches cutting through silent mode.",
+    "align": "left"
+  },
+  {
+    "id": 4,
+    "phase": "Phase 04",
+    "title": "Full Blossom",
+    "subtitle": "Deployment & Scaling",
+    "iconType": "rocket",
+    "desc": "Expanding emergency circle integration, community safety networks, and first-responder partner integrations nationwide.",
+    "align": "right"
+  }
+]

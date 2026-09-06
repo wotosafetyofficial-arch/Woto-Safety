@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Day Mode Default */
+    --bg-main: #FAF9FC;
+    --card-bg: #FFFFFF;
+    --text-main: #191824;
+    --text-muted: #5A586E;
+    --primary: #4F4A86;
+    --primary-deep: #29264D;
+    --lavender-soft: #E8E6F4;
+    --coral: #E45867;
+    --green: #3BA77C;
+    --border: #DDDCE6;
+    --glass: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.4);
+  }
+
+  .dark {
+    /* Night Mode Overrides */
+    --bg-main: #12111A;
+    --card-bg: #1C1A2B;
+    --text-main: #FAF9FC;
+    --text-muted: #A3A1B8;
+    --primary: #6B65B3;
+    --primary-deep: #191824;
+    --lavender-soft: #29264D;
+    --border: #2E2B45;
+    --glass: rgba(28, 26, 43, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.08);
+  }
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+/* Animated border gradient */
+@keyframes borderGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-border-card {
+  position: relative;
+  background-clip: padding-box;
+}
+
+.animated-border-card::before {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 1.5rem; /* matches rounded-3xl */
+  padding: 1.5px;
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    var(--coral),
+    var(--green),
+    var(--primary)
+  );
+  background-size: 300% 300%;
+  animation: borderGlow 6s ease infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
