@@ -21,6 +21,7 @@ app.use('/api/config', require('./server/routes/configRoutes'));
 app.use('/api/config', require('./server/routes/configRoutes'));
 app.use('/api/careers', require('./server/routes/careerRoutes'));
 app.use('/api/contact', require('./server/routes/contactRoutes'));
+app.use('/api/admin', require('./server/routes/adminRoutes'));
 
 // Root Healthcheck Route
 app.get('/', (req, res) => {

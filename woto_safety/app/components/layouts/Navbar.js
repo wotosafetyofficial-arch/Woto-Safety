@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon, Menu, X, Sparkles } from "lucide-react";
+import { Sun, Moon, Menu, X, Sparkles, Lock } from "lucide-react";
 import axios from "axios";
 import CareersModal from "../careers/CareersModal";
 import api from "../API/api";
@@ -16,7 +16,6 @@ export default function Navbar() {
   const [isHiringActive, setIsHiringActive] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Fetch hiring status from Backend API on mount
   useEffect(() => {
     const fetchHiringStatus = async () => {
       try {
@@ -30,7 +29,6 @@ export default function Navbar() {
     fetchHiringStatus();
   }, []);
 
-  // Handle scroll detection for dynamic backdrop blur
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -39,7 +37,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Sync theme with dark mode class on HTML document
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
@@ -73,7 +70,6 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            
             {/* Custom Image Brand Logo */}
             <Link href="/" className="flex items-center gap-3 group">
               <div className="relative w-10 h-10 group-hover:scale-105 transition-transform duration-200">
@@ -108,8 +104,8 @@ export default function Navbar() {
               ))}
             </nav>
 
-            {/* Right Section: Theme Toggle & Dynamic Hiring Button */}
-            <div className="hidden md:flex items-center gap-4">
+            {/* Right Section: Theme Toggle, Admin Button & Hiring Button */}
+            <div className="hidden md:flex items-center gap-3">
               <button
                 onClick={toggleTheme}
                 aria-label="Toggle Theme"
@@ -121,6 +117,15 @@ export default function Navbar() {
                   <Moon className="w-5 h-5 text-[var(--primary-deep)]" />
                 )}
               </button>
+
+              {/* Admin Portal Button */}
+              <Link
+                href="/admin"
+                aria-label="Admin Portal"
+                className="p-2.5 rounded-xl bg-[var(--lavender-soft)] dark:bg-[var(--primary-deep)] text-[var(--text-main)] hover:opacity-80 transition-all duration-200 border border-[var(--border)]"
+              >
+                <Lock className="w-5 h-5 text-[var(--coral)]" />
+              </Link>
 
               {/* Dynamic Join WOTO Modal Trigger */}
               {isHiringActive && (
@@ -137,13 +142,21 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Menu Trigger */}
-            <div className="flex md:hidden items-center gap-3">
+            <div className="flex md:hidden items-center gap-2">
               <button
+                title="Day/Night"
                 onClick={toggleTheme}
                 className="p-2 rounded-lg bg-[var(--lavender-soft)] dark:bg-[var(--primary-deep)] text-[var(--text-main)]"
               >
                 {isDarkMode ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5" />}
               </button>
+              <Link
+                title="Admin Portal"
+                href="/admin"
+                className="p-2 rounded-lg bg-[var(--lavender-soft)] dark:bg-[var(--primary-deep)] text-[var(--text-main)]"
+              >
+                <Lock className="w-5 h-5 text-[var(--coral)]" />
+              </Link>
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="p-2 rounded-lg text-[var(--text-main)] focus:outline-none"
